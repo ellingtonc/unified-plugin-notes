@@ -8,10 +8,11 @@ interface PluginConfig {}
 
 /**
  * Unified/Remark `mdast` plugin.
- * Returns a transformer function that can read/modify the `mdast` tree.
+ * Returns a transformer function that can read the `mdast` tree which
+ * optionally returns a modified tree for the next plugin to consume.
  */
 const remarkPlugin: Plugin<[PluginConfig], Root> = (config) => {
-  return async (tree) => {
+  return async (tree, file) => {
     // ...do stuff
     return tree;
   };
@@ -30,10 +31,11 @@ interface PluginConfig {}
 
 /**
  * Unified/Rehype `hast` plugin.
- * Returns a transformer function that can read/modify the `hast` tree.
+ * Returns a transformer function that can read the `hast` tree which
+ * optionally returns a modified tree for the next plugin to consume.
  */
 const rehypePlugin: Plugin<[PluginConfig], Root> = (config) => {
-  return async (tree) => {
+  return async (tree, file) => {
     // ...do stuff
     return tree;
   };
